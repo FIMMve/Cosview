@@ -1,13 +1,14 @@
 const monthFormatter = (month: string) : number => {
-  const monthArray = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
-  return monthArray.indexOf(month) + 1
+  const monthArray = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
+  return monthArray.indexOf(month.toLocaleLowerCase()) + 1
 }
 
 export const dateFormatter = (date: string): string => {
-  const splitedDate = date.split(" ")
-  const month = monthFormatter(splitedDate[1])
+  const formatedDate = date.replaceAll(",", "")
+  const splitedDate = formatedDate.split(" ")
+  const month = monthFormatter(splitedDate[0])
   const monthFormated = month < 10 ? `0${month}` : month
-  const dayFormated = splitedDate[0].length < 2 ? `0${splitedDate[0]}` : splitedDate[0]
+  const dayFormated = splitedDate[1].length < 2 ? `0${splitedDate[1]}` : splitedDate[1]
 
   const formattedDate = `${splitedDate[2]}-${monthFormated}-${dayFormated}`
 
