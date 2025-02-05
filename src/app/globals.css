@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Impact";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/impact.ttf");
+}
+
+.header-title{
+  font-family: "Impact";
+}

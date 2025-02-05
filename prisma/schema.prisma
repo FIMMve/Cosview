@@ -1,0 +1,340 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  id_number String @unique 
+  email String @unique
+  username String @unique
+  phone_number String @unique
+  password String
+  role String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Company {
+  id Int @id @default(autoincrement())
+  name String
+  company_name String @unique
+  phone_number String
+  email String[]
+  zone String
+  code String?
+  img String?
+
+  legal_representative LegalRepresentative? @relation(fields: [legal_representative_id], references: [id])
+  legal_representative_id Int?
+
+  employees EmployeeRecord[]
+  committees Committee?
+
+  rif String
+  nil String
+  ivss String
+  inces String
+  address Json
+  economyc_activity String
+  section String
+
+  sysl Sysl?
+  inpections Inspection?
+  first_aid FirstAid?
+  electrical_prevention ElectricalPrevention?
+  signaling Signaling?
+  fire_extinguisher FireExtinguisher[]
+  capacitations Capacitation[]
+  evaluations Evaluations?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model LegalRepresentative {
+  id Int @id @default(autoincrement())
+  name String
+  id_number String @unique
+  phone_number String @unique
+
+  company Company[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model EmployeeRecord {
+  id Int @id @default(autoincrement())
+
+  company Company @relation(fields: [company_id], references: [id])
+  company_id Int
+
+  committee Committee? @relation(fields: [committee_id], references: [id])
+  committee_id Int?
+
+  committee_delegate Boolean?
+  committee_second_postulate Boolean?
+  committee_elections Boolean?
+
+  name String
+  id_number String @unique
+  phone_number String? @unique
+  gender String
+  position String
+  employeerRepresentative Boolean?
+  preventionRepresentative Boolean?
+  birthdate String
+  hire_date String
+  termination_date String?
+  status String
+
+  route_format Boolean
+  prevention_principles Boolean
+  rutagrama Boolean
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Committee {
+  id Int @id @default(autoincrement())
+  
+  company Company @relation(fields: [company_id], references: [id])
+  company_id Int @unique
+
+  center_certificate String @default("No Posee")
+  committee_certificate String @default("No Posee")
+  delegate_certificate String @default("No Posee")
+  inpsasel_email String?
+  inpsasel_password String?
+  constitution String?
+  delegate_code String?
+  registratrion_date String?
+  inpsasel_report_date String?
+  transcription_date String?
+  ministry_labor_letter String?
+
+  call_date Json?
+  application_date Json?
+  election_date Json?
+  mutual_agreement Json?
+  designation_date Json?
+  aceptance_date Json?
+  formal_agreement Json?
+
+  members EmployeeRecord[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Sysl {
+  id Int @id @default(autoincrement())
+  
+  company Company @relation(fields: [company_id], references: [id])
+  company_id Int @unique
+
+  sysl_program String?
+  participation_approval_minutes String?
+  signed_program Boolean?
+
+  folder Json?
+
+  accident_rate String?
+  morbidity_rate String?
+  occupational_doctor String?
+
+  prl String?
+  shifts Json?
+
+  cultural_component Json?
+  sports_component Json?
+  recreational_component Json?
+  formation_component Json?
+  familiar_component Json?
+  brain_gymnastics Json?
+  integration_dynamics Json?
+
+  active_pause Json?
+
+  committee_registration Float @default(0) 
+  service_registration Float @default(0)
+  sysl_policies Float @default(0)
+  occupational_medical Float @default(0)
+  statistics Float @default(0)
+  informative_topics Float @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Inspection {
+  id Int @id @default(autoincrement())
+
+  company Company @relation(fields: [company_id], references: [id])
+  company_id Int @unique
+
+  inspection_date String?
+  inspector_name String?
+  inspection_notes String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FirstAid {
+  id Int @id @default(autoincrement())
+
+  company Company @relation(fields: [company_id], references: [id])
+  company_id Int @unique
+
+  location String?
+  
+  cotton Int @default(0)
+  gauze_roll Int @default(0)
+  sterile_gauze Int @default(0)
+  eye_cures Int @default(0)
+  adhesive Int @default(0)
+  bandaids Int @default(0)
+  elastic_bandage_6 Int @default(0)
+  elastic_bandage_8 Int @default(0)
+  elastic_bandage_12 Int @default(0)
+  sterile_dressing Int @default(0)
+  tongue_depressor Int @default(0)
+  cotton_applicator Int @default(0)
+  triangular_bandages Int @default(0)
+  scissors Int @default(0)
+  soap Int @default(0)
+  oral_thermometer Int @default(0)
+  eye_wash Int @default(0)
+  anti_inflammatory Int @default(0)
+  alcohol Int @default(0)
+  hydrogen_peroxide Int @default(0)
+  disposable_gloves Int @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ElectricalPrevention {
+  id Int @id @default(autoincrement())
+
+  company Company @relation(fields: [company_id], references: [id])
+  company_id Int @unique
+
+  emergency_lights Int? @default(0)
+  operative_lights Int? @default(0)
+  electric_generator Boolean? @default(false)
+  solar_panel Boolean? @default(false)
+  emergency_batteries Boolean? @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Signaling {
+  id Int @id @default(autoincrement())
+
+  company Company @relation(fields: [company_id], references: [id])
+  company_id Int @unique
+
+  emergency_exit Boolean? @default(false)
+  electric_risk Boolean? @default(false)
+  fire_extinguisher Boolean? @default(false)
+  first_aid_kit Boolean? @default(false)
+  area_signaling Boolean? @default(false)
+  danger_drop Boolean? @default(false)
+  no_smoking Boolean? @default(false)
+  weapons_prohibition Boolean? @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FireExtinguisher {
+  id Int @id @default(autoincrement())
+
+  company Company @relation(fields: [company_id], references: [id])
+  company_id Int 
+
+  location String
+  expiration_date String
+  type_of_charge_and_fire String
+  capacity String
+  maintenance Boolean
+  free_of_obstacles Boolean
+  activation_lever Boolean
+  carrying_handle Boolean
+  safety_seal Boolean
+  pressure_gauge Boolean
+  cylinder Boolean
+  labels Boolean
+  hose Boolean
+  hose_holder Boolean
+  nozzle Boolean
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Capacitation {
+  id Int @id @default(autoincrement())
+
+  company Company @relation(fields: [company_id], references: [id])
+  company_id Int
+
+  topic String?
+  dynamics String?
+  date String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Events {
+  id Int @id @default(autoincrement())
+
+  start String
+  end String
+  title String
+  allDay Boolean @default(true)
+  color String
+  backgroundColor String
+  notes String?
+  hour Int
+  minutes Int
+  end_hour Int
+  end_minutes Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Evaluations{
+  id Int @id @default(autoincrement())
+
+  company Company @relation(fields: [company_id], references: [id])
+  company_id Int @unique
+
+  reference_date String?
+
+  employee_record Json?
+  committee Json?
+  sysl Json?
+  inspection Json?
+  capacitations Json?
+}
+
+model Project{
+  id Int @id @default(autoincrement())
+
+  start String @default("2025-01-01")
+  end String @default("2025-01-01")
+}
