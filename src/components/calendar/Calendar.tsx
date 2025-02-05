@@ -41,7 +41,7 @@ const colorOptions = [
 ]
 
 export default function Calendar() {
-  const supabase = createClient('https://eolhpjpgenlumbqjegyo.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVvbGhwanBnZW5sdW1icWplZ3lvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzMyMDE3MDYsImV4cCI6MjA0ODc3NzcwNn0.i8bYVMJK7zVNCGmpRfaYQ0DY8029OszB6VvK1D_hi50')
+  const supabase = createClient('https://ugfhghfwcojyfakvxcez.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVnZmhnaGZ3Y29qeWZha3Z4Y2V6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg3MzE2MjYsImV4cCI6MjA1NDMwNzYyNn0.l8IYp3PDQA75JkCjZHa2Q02GcRuVlBPEwPfi_kTPEdI')
 
   const { onOpen, isOpen, onOpenChange, onClose } = useDisclosure()
 
