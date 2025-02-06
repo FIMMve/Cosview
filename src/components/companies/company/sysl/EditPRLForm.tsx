@@ -154,7 +154,7 @@ export default function EditPRLForm({companyId, sysl, setEdit} : EditSySLFormPro
         <DateInput 
           size="sm"
           label="Gimnasia Mental"
-          defaultValue={updatedSysl?.brain_gymnastics?.date ? parseDate(dateFormatter(updatedSysl?.brain_gymnastics?.date)) : null}
+          defaultValue={sysl?.brain_gymnastics?.date ? parseDate(dateFormatter(sysl?.brain_gymnastics?.date)) : null}
           onChange={e => setUpdatedSysl({...updatedSysl, brain_gymnastics: {
             ...updatedSysl.brain_gymnastics,
             date: formatter.format(e.toDate(getLocalTimeZone()))
@@ -174,7 +174,7 @@ export default function EditPRLForm({companyId, sysl, setEdit} : EditSySLFormPro
         <DateInput 
           size="sm"
           label="Dinámicas de Integración"
-          defaultValue={updatedSysl?.integration_dynamics?.date ? parseDate(dateFormatter(updatedSysl?.integration_dynamics?.date)) : null}
+          defaultValue={sysl?.integration_dynamics?.date ? parseDate(dateFormatter(sysl?.integration_dynamics?.date)) : null}
           onChange={e => setUpdatedSysl({...updatedSysl, integration_dynamics: {
             ...updatedSysl.integration_dynamics,
             date: formatter.format(e.toDate(getLocalTimeZone()))
