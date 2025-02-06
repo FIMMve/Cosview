@@ -99,7 +99,7 @@ export default function FirstAidsData({companyId} : FirstAidsDataProps) {
         <div className="w-full flex flex-col gap-1 md:mx-2 my-2 md:my-0">
           <h2 className="text-lg font-bold text-primary dark:text-secondary">Botiquín</h2>
 
-          {data && updatedFirstAids && updatedFirstAids?.firstAids && edit ? (
+          {data && updatedFirstAids && edit ? (
             <EditFirstAids edit={edit} setEdit={setEdit} getFirstAids={getFirstAids} companyId={companyId} updatedFirstAids={updatedFirstAids} setUpdatedFirstAids={setUpdatedFirstAids} />
           ) : (
             <div className="flex flex-col md:flex-row print:flex-row gap-5">
