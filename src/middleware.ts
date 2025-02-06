@@ -8,7 +8,9 @@ export async function middleware(req: NextRequest){
   if(!token) return NextResponse.redirect(new URL("/", req.url))
   
   if(token.role === "user"){
-    if(!req.nextUrl.pathname.startsWith("/dashboard") || !req.nextUrl.pathname.startsWith("/companies")) return NextResponse.redirect(new URL("/dashboard", req.url))
+    if(!req.nextUrl.pathname.startsWith("/companies")){
+      if(!req.nextUrl.pathname.startsWith("/dashboard")) return NextResponse.redirect(new URL("/dashboard", req.url))
+    }
   }
 }
 
