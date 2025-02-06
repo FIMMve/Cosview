@@ -73,6 +73,14 @@ export async function POST(request : any){
             date: null,
             hour: null
           }
+        },
+        integration_dynamics: {
+          date: null,
+          hour: null
+        },
+        brain_gymnastics: {
+          date: null,
+          hour: null
         }
       }
     })

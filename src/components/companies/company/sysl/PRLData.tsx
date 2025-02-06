@@ -24,8 +24,8 @@ export default function PRLData({companyId} : {companyId: number}) {
       {key: "Componente Recreacional", value: sysl?.recreational_component && `${sysl?.recreational_component?.item} - ${sysl?.recreational_component?.month}`},
       {key: "Componente de Formación", value: sysl?.formation_component && `${sysl?.formation_component?.item} - ${sysl?.formation_component?.month}`},
       {key: "Componente Familiar", value: sysl?.familiar_component && `${sysl?.familiar_component?.item} - ${sysl?.familiar_component?.month}`},
-      {key: "Gimnasia Mental", value: sysl?.brain_gymnastics && `${sysl?.brain_gymnastics?.item} - ${sysl?.brain_gymnastics?.month}`},
-      {key: "Dinámica de Integración", value: sysl?.integration_dynamics && `${sysl?.integration_dynamics?.item} - ${sysl?.integration_dynamics?.month}`},
+      {key: "Gimnasia Mental", value: sysl?.brain_gymnastics?.date && `${sysl?.brain_gymnastics?.date} - ${sysl?.brain_gymnastics?.hour}`},
+      {key: "Dinámica de Integración", value: sysl?.integration_dynamics?.date && `${sysl?.integration_dynamics?.date} - ${sysl?.integration_dynamics?.hour}`},
       {key: "Pausa Activa 1", value: sysl?.active_pause?.first?.date && `Fecha: ${sysl?.active_pause?.first?.date} - Hora: ${sysl?.active_pause?.first?.hour}`},
       {key: "Pausa Activa 2", value: sysl?.active_pause?.second?.date && `Fecha: ${sysl?.active_pause?.second?.date} - Hora: ${sysl?.active_pause?.second?.hour}`},
     ])

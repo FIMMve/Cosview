@@ -98,7 +98,10 @@ export default function EditPRLForm({companyId, sysl, setEdit} : EditSySLFormPro
           size="sm"
           label="Componente Recreacional"
           value={updatedSysl?.recreational_component?.item}
-          onChange={e => setUpdatedSysl({...updatedSysl, recreational_component: {...updatedSysl.recreational_component, item: e.target.value}})}
+          onChange={e => setUpdatedSysl({...updatedSysl, recreational_component: {
+            ...updatedSysl.recreational_component, 
+            item: e.target.value
+          }})}
         />
 
         <Input 
@@ -148,38 +151,42 @@ export default function EditPRLForm({companyId, sysl, setEdit} : EditSySLFormPro
       </div>
 
       <div className="flex gap-2">
-        <Input 
-          type="text"
+        <DateInput 
           size="sm"
           label="Gimnasia Mental"
-          value={updatedSysl?.brain_gymnastics?.item}
-          onChange={e => setUpdatedSysl({...updatedSysl, brain_gymnastics: {...updatedSysl.brain_gymnastics, item: e.target.value}})}
+          defaultValue={updatedSysl?.brain_gymnastics?.date ? parseDate(dateFormatter(updatedSysl?.brain_gymnastics?.date)) : null}
+          onChange={e => setUpdatedSysl({...updatedSysl, brain_gymnastics: {
+            ...updatedSysl.brain_gymnastics,
+            date: formatter.format(e.toDate(getLocalTimeZone()))
+          }})}
         />
 
         <Input 
           type="text"
           size="sm"
-          label="Mes"
-          value={updatedSysl?.brain_gymnastics?.month}
-          onChange={e => setUpdatedSysl({...updatedSysl, brain_gymnastics: {...updatedSysl.brain_gymnastics, month: e.target.value}})}
+          label="Hora"
+          value={updatedSysl?.brain_gymnastics?.hour}
+          onChange={e => setUpdatedSysl({...updatedSysl, brain_gymnastics: {...updatedSysl.brain_gymnastics, hour: e.target.value}})}
         />
       </div>
 
       <div className="flex gap-2">
-        <Input 
-          type="text"
+        <DateInput 
           size="sm"
           label="Dinámicas de Integración"
-          value={updatedSysl?.integration_dynamics?.item}
-          onChange={e => setUpdatedSysl({...updatedSysl, integration_dynamics: {...updatedSysl.integration_dynamics, item: e.target.value}})}
+          defaultValue={updatedSysl?.integration_dynamics?.date ? parseDate(dateFormatter(updatedSysl?.integration_dynamics?.date)) : null}
+          onChange={e => setUpdatedSysl({...updatedSysl, integration_dynamics: {
+            ...updatedSysl.integration_dynamics,
+            date: formatter.format(e.toDate(getLocalTimeZone()))
+          }})}
         />
 
         <Input 
           type="text"
           size="sm"
-          label="Mes"
-          value={updatedSysl?.integration_dynamics?.month}
-          onChange={e => setUpdatedSysl({...updatedSysl, integration_dynamics: {...updatedSysl.integration_dynamics, month: e.target.value}})}
+          label="Hora"
+          value={updatedSysl?.integration_dynamics?.hour}
+          onChange={e => setUpdatedSysl({...updatedSysl, integration_dynamics: {...updatedSysl.integration_dynamics, hour: e.target.value}})}
         />
       </div>
 
