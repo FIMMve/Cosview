@@ -41,6 +41,7 @@ const colorOptions = [
 ]
 
 export default function Calendar() {
+  // editar url y api key
   const supabase = createClient('https://ugfhghfwcojyfakvxcez.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVnZmhnaGZ3Y29qeWZha3Z4Y2V6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg3MzE2MjYsImV4cCI6MjA1NDMwNzYyNn0.l8IYp3PDQA75JkCjZHa2Q02GcRuVlBPEwPfi_kTPEdI')
 
   const { onOpen, isOpen, onOpenChange, onClose } = useDisclosure()
