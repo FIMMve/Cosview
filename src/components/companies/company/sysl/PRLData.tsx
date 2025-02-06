@@ -16,7 +16,7 @@ export default function PRLData({companyId} : {companyId: number}) {
 
   useEffect(() => {
     setData([
-      {key: "Programa Recreativo Laboral", value: sysl?.prl, warning: dateComparator(sysl?.sysl_program, evaluation?.reference_date)},
+      {key: "Programa Recreativo Laboral", value: sysl?.prl, warning: dateComparator(sysl?.prl, evaluation?.reference_date)},
       {key: "Primer Turno", value: sysl?.shifts?.first_shift},
       {key: "Segundo Turno", value: sysl?.shifts?.second_shift},
       {key: "Componente Cultural", value: sysl?.cultural_component && `${sysl?.cultural_component?.item} - ${sysl?.cultural_component?.month}`},
